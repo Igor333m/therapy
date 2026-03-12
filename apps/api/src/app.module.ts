@@ -10,7 +10,7 @@ import { SessionsModule } from './sessions/sessions.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot({ isGlobal: true, envFilePath: '../../.env' }),
     ScheduleModule.forRoot(),
     AuthModule,
     SessionsModule,

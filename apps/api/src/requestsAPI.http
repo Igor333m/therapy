@@ -1,1 +1,50 @@
 GET http://localhost:3001/api/health
+
+### Register Client
+POST http://localhost:3001/api/auth/register
+Content-Type: application/json
+
+{
+	"email": "client1@example.com",
+	"password": "StrongPass123!",
+	"role": "client"
+}
+
+### Verify Email
+POST http://localhost:3001/api/auth/verify-email
+Content-Type: application/json
+
+{
+	"token": "fb6f03a34d11a5d24bce224d0cca40cb97bb598328d9e42f"
+}
+
+### Login
+POST http://localhost:3001/api/auth/login
+Content-Type: application/json
+
+{
+	"email": "client1@example.com",
+	"password": "StrongPass123!"
+}
+
+### Refresh Token
+POST http://localhost:3001/api/auth/refresh
+Content-Type: application/json
+
+{
+	"refreshToken": "paste_refresh_token_here"
+}
+
+### Me (JWT required)
+GET http://localhost:3001/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmYjBlN2Q5Ni03YzhjLTQzNTgtYjllYi02ZjNiMzUyNDQ4YjIiLCJlbWFpbCI6ImNsaWVudDFAZXhhbXBsZS5jb20iLCJyb2xlIjoiY2xpZW50IiwiZW1haWxWZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzczMzU1OTIzLCJleHAiOjE3NzMzNTY4MjN9.rpj_-avI2g45xHIQTySBWhdHUOQUj9CC8Bp_zVkMPWs
+
+### Client Booking Request (client JWT)
+POST http://localhost:3001/api/sessions/booking-requests
+Authorization: Bearer paste_access_token_here
+Content-Type: application/json
+
+{
+	"therapistId": "therapist_123",
+	"startAtUtc": "2026-03-20T10:00:00.000Z"
+}
