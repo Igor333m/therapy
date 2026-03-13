@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { CurrentUser } from '../auth/current-user.decorator';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { JwtRolesGuard } from '../auth/guards/jwt-roles.guard';
 import type { AuthUser } from '../auth/auth.types';
 import { Roles } from '../auth/roles.decorator';
 import { CreateBookingRequestDto } from './dto/create-booking-request.dto';
@@ -11,7 +11,7 @@ export class SessionsController {
   constructor(private readonly sessionsService: SessionsService) {}
 
   @Post('booking-requests')
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtRolesGuard)
   @Roles('client')
   createBookingRequest(
     @CurrentUser() user: AuthUser,
@@ -25,7 +25,7 @@ export class SessionsController {
   }
 
   @Get('therapist-queue')
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtRolesGuard)
   @Roles('therapist')
   therapistQueue(@CurrentUser() user: AuthUser): { therapistId: string; items: number } {
     return {
@@ -35,7 +35,7 @@ export class SessionsController {
   }
 
   @Get('moderation-audit')
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtRolesGuard)
   @Roles('moderator')
   moderationAudit(): { queueDepth: number; openFlags: number } {
     return {

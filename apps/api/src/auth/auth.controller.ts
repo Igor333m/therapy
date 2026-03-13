@@ -6,16 +6,17 @@ import {
   Post,
   UseGuards
 } from '@nestjs/common';
+import type { UserRole } from '@therapy/shared';
 import { AuthService } from './auth.service';
 import { CurrentUser } from './current-user.decorator';
-import { JwtAuthGuard } from './jwt-auth.guard';
+import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { LoginDto } from './dto/login.dto';
 import { RefreshTokenDto } from './dto/refresh-token.dto';
 import { RegisterDto } from './dto/register.dto';
 import { VerifyEmailDto } from './dto/verify-email.dto';
 import type { AuthUser } from './auth.types';
 import { Roles } from './roles.decorator';
-import { RolesGuard } from './roles.guard';
+import { JwtRolesGuard } from './guards/jwt-roles.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -25,7 +26,7 @@ export class AuthController {
   async register(@Body() dto: RegisterDto): Promise<{
     userId: string;
     email: string;
-    role: string;
+    role: UserRole;
     emailVerified: boolean;
     emailVerificationToken: string;
   }> {
@@ -63,7 +64,7 @@ export class AuthController {
   }
 
   @Get('moderation/check')
-  @UseGuards(JwtAuthGuard, RolesGuard)
+  @UseGuards(JwtRolesGuard)
   @Roles('moderator')
   moderationCheck(@CurrentUser() user: AuthUser): { ok: true; role: string } {
     return { ok: true, role: user.role };

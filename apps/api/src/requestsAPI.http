@@ -1,3 +1,5 @@
+
+### Check health
 GET http://localhost:3001/api/health
 
 ### Register Client
@@ -10,20 +12,39 @@ Content-Type: application/json
 	"role": "client"
 }
 
+### Register therapist
+POST http://localhost:3001/api/auth/register
+Content-Type: application/json
+
+{
+	"email": "therapist@example.com",
+	"password": "StrongPass123!",
+	"role": "therapist"
+}
+
 ### Verify Email
 POST http://localhost:3001/api/auth/verify-email
 Content-Type: application/json
 
 {
-	"token": "fb6f03a34d11a5d24bce224d0cca40cb97bb598328d9e42f"
+	"token": "paste_verification_token_here"
 }
 
-### Login
+### Login client
 POST http://localhost:3001/api/auth/login
 Content-Type: application/json
 
 {
 	"email": "client1@example.com",
+	"password": "StrongPass123!"
+}
+
+### Login therapist
+POST http://localhost:3001/api/auth/login
+Content-Type: application/json
+
+{
+	"email": "therapist@example.com",
 	"password": "StrongPass123!"
 }
 
@@ -37,7 +58,7 @@ Content-Type: application/json
 
 ### Me (JWT required)
 GET http://localhost:3001/api/auth/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmYjBlN2Q5Ni03YzhjLTQzNTgtYjllYi02ZjNiMzUyNDQ4YjIiLCJlbWFpbCI6ImNsaWVudDFAZXhhbXBsZS5jb20iLCJyb2xlIjoiY2xpZW50IiwiZW1haWxWZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzczMzU1OTIzLCJleHAiOjE3NzMzNTY4MjN9.rpj_-avI2g45xHIQTySBWhdHUOQUj9CC8Bp_zVkMPWs
+Authorization: Bearer paste_access_token_here
 
 ### Client Booking Request (client JWT)
 POST http://localhost:3001/api/sessions/booking-requests
@@ -45,6 +66,6 @@ Authorization: Bearer paste_access_token_here
 Content-Type: application/json
 
 {
-	"therapistId": "therapist_123",
+	"therapistId": "paste_id_here",
 	"startAtUtc": "2026-03-20T10:00:00.000Z"
 }

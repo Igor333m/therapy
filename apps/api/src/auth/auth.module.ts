@@ -6,7 +6,9 @@ import { PassportModule } from '@nestjs/passport';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './jwt.strategy';
-import { RolesGuard } from './roles.guard';
+import { JwtAuthGuard } from './guards/jwt-auth.guard';
+import { RolesGuard } from './guards/roles.guard';
+import { JwtRolesGuard } from './guards/jwt-roles.guard';
 import { ACCESS_TOKEN_EXPIRES_IN } from './auth.constants'
 
 @Module({
@@ -24,10 +26,9 @@ import { ACCESS_TOKEN_EXPIRES_IN } from './auth.constants'
   providers: [
     AuthService,
     JwtStrategy,
-    {
-      provide: APP_GUARD,
-      useClass: RolesGuard
-    }
+    JwtAuthGuard,
+    RolesGuard,
+    JwtRolesGuard
   ],
   exports: [AuthService]
 })

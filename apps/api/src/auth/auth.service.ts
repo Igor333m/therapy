@@ -16,7 +16,6 @@ import type { LoginDto } from './dto/login.dto';
 import type { RegisterDto } from './dto/register.dto';
 import type { InMemoryUser } from './in-memory-user.interface';
 import type { JwtPayload, Tokens } from './auth.types';
-import { log } from 'node:console';
 
 @Injectable()
 export class AuthService {
@@ -136,12 +135,11 @@ export class AuthService {
       emailVerified: user.emailVerified
     };
 
-    const accessSecret = this.configService.get<string>(
+    const accessSecret = this.configService.getOrThrow<string>(
       'JWT_ACCESS_SECRET'
     );
-    const refreshSecret = this.configService.get<string>(
-      'JWT_REFRESH_SECRET',
-      'replace_me' // TODO: remove
+    const refreshSecret = this.configService.getOrThrow<string>(
+      'JWT_REFRESH_SECRET'
     );
 
     const [accessToken, refreshToken] = await Promise.all([
@@ -161,9 +159,8 @@ export class AuthService {
   }
 
   private async verifyRefreshToken(token: string): Promise<JwtPayload> {
-    const refreshSecret = this.configService.get<string>(
-      'JWT_REFRESH_SECRET',
-      'replace_me' // TODO: remove
+    const refreshSecret = this.configService.getOrThrow<string>(
+      'JWT_REFRESH_SECRET'
     );
 
     try {
