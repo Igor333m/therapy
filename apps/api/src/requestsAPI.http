@@ -27,7 +27,7 @@ POST http://localhost:3001/api/auth/verify-email
 Content-Type: application/json
 
 {
-	"token": "paste_verification_token_here"
+	"token": "42d308172d1de1e9037eed4f782a050ec36b70fd13b471e2"
 }
 
 ### Login client
@@ -58,14 +58,24 @@ Content-Type: application/json
 
 ### Me (JWT required)
 GET http://localhost:3001/api/auth/me
-Authorization: Bearer paste_access_token_here
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhMjE5NzVmNC1mMzAwLTQ4MjctOGMxMS1mMGU4MjRmNjUzZjEiLCJlbWFpbCI6InRoZXJhcGlzdEBleGFtcGxlLmNvbSIsInJvbGUiOiJ0aGVyYXBpc3QiLCJlbWFpbFZlcmlmaWVkIjp0cnVlLCJpYXQiOjE3NzM4MTQxMjUsImV4cCI6MTc3MzgxNTAyNX0.MmoY0ge5vpK3oownsJnymUFUS0ntyW_BUZr7zpVfH68
 
 ### Client Booking Request (client JWT)
 POST http://localhost:3001/api/sessions/booking-requests
-Authorization: Bearer paste_access_token_here
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmYjhjMDlhMC1hNzg1LTQ0ZmItODdkYS1kNGIyMDFkNDUwMDIiLCJlbWFpbCI6ImNsaWVudDFAZXhhbXBsZS5jb20iLCJyb2xlIjoiY2xpZW50IiwiZW1haWxWZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzczODEzOTIzLCJleHAiOjE3NzM4MTQ4MjN9.LePI5Baa0a6m2alDIWigpXximDA3Bx-eZAedk5hYfSU
 Content-Type: application/json
 
 {
-	"therapistId": "paste_id_here",
-	"startAtUtc": "2026-03-20T10:00:00.000Z"
+	"therapistId": "a21975f4-f300-4827-8c11-f0e824f653f1",
+	"startAtUtc": "2026-05-20T10:00:00.000Z"
+}
+
+### Therapist queue (therapist JWT)
+# TODO: 
+GET http://localhost:3001/api/sessions/therapist-queue
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhMjE5NzVmNC1mMzAwLTQ4MjctOGMxMS1mMGU4MjRmNjUzZjEiLCJlbWFpbCI6InRoZXJhcGlzdEBleGFtcGxlLmNvbSIsInJvbGUiOiJ0aGVyYXBpc3QiLCJlbWFpbFZlcmlmaWVkIjp0cnVlLCJpYXQiOjE3NzM4MTQ2MzEsImV4cCI6MTc3MzgxNTUzMX0.VZgqjJH3P8HPEbpqoLH_lJEUkezwxe3RIHSf7qf9Il4
+Content-Type: application/json
+
+{
+	
 }
