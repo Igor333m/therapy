@@ -26,7 +26,7 @@ export class SessionRecording {
   @Column({ name: 'booking_request_id' })
   bookingRequestId: string
 
-  @OneToOne('BookingRequest')
+@OneToOne('BookingRequest', { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'booking_request_id' })
   bookingRequest: BookingRequest
 
