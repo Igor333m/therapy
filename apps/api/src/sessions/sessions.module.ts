@@ -6,9 +6,7 @@ import { SessionsService } from './sessions.service'
 @Module({
   imports: [AuthModule],
   controllers: [SessionsController],
-  providers: [
-    SessionsService    
-  ],
+  providers: [SessionsService],
   exports: [SessionsService]
 })
 export class SessionsModule {}
