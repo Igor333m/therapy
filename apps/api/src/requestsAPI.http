@@ -1,1 +1,71 @@
+
+### Check health
 GET http://localhost:3001/api/health
+
+### Register Client
+POST http://localhost:3001/api/auth/register
+Content-Type: application/json
+
+{
+	"email": "client1@example.com",
+	"password": "StrongPass123!",
+	"role": "client"
+}
+
+### Register therapist
+POST http://localhost:3001/api/auth/register
+Content-Type: application/json
+
+{
+	"email": "therapist@example.com",
+	"password": "StrongPass123!",
+	"role": "therapist"
+}
+
+### Verify Email
+POST http://localhost:3001/api/auth/verify-email
+Content-Type: application/json
+
+{
+	"token": "paste_verification_token_here"
+}
+
+### Login client
+POST http://localhost:3001/api/auth/login
+Content-Type: application/json
+
+{
+	"email": "client1@example.com",
+	"password": "StrongPass123!"
+}
+
+### Login therapist
+POST http://localhost:3001/api/auth/login
+Content-Type: application/json
+
+{
+	"email": "therapist@example.com",
+	"password": "StrongPass123!"
+}
+
+### Refresh Token
+POST http://localhost:3001/api/auth/refresh
+Content-Type: application/json
+
+{
+	"refreshToken": "paste_refresh_token_here"
+}
+
+### Me (JWT required)
+GET http://localhost:3001/api/auth/me
+Authorization: Bearer paste_access_token_here
+
+### Client Booking Request (client JWT)
+POST http://localhost:3001/api/sessions/booking-requests
+Authorization: Bearer paste_access_token_here
+Content-Type: application/json
+
+{
+	"therapistId": "paste_id_here",
+	"startAtUtc": "2026-03-20T10:00:00.000Z"
+}

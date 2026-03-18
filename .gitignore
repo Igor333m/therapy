@@ -10,6 +10,8 @@ coverage
 
 .github
 
+# TypeScript incremental build artifact
+tsconfig.tsbuildinfo
 
 # Logs
 logs
