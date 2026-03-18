@@ -8,7 +8,7 @@ export class InitSchema1710500000000 implements MigrationInterface {
 
     await queryRunner.query(`
       CREATE TABLE IF NOT EXISTS users (
-        id uuid PRIMARY KEY,
+        id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
         email varchar(320) NOT NULL UNIQUE,
         password_hash varchar NOT NULL,
         role varchar(20) NOT NULL DEFAULT 'client',

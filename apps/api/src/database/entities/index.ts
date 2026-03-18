@@ -10,7 +10,7 @@ export { ContactInquiry } from './contact-inquiry.entity'
 export type { VerificationStatus } from './therapist-profile.entity'
 export type { BookingStatus } from './booking-request.entity'
 export type { RecordingStatus, TranscriptStatus } from './session.entity'
-export type { PublishStatus, } from './content.entity'
+export type { PublishStatus } from './content.entity'
 export type { InquiryStatus } from './contact-inquiry.entity'
 export type { ServiceSlug } from './service.entity'
 

@@ -43,8 +43,8 @@ async function seed(): Promise<void> {
   const moderatorEmail = process.env.SEED_MODERATOR_EMAIL
   const moderatorPassword = process.env.SEED_MODERATOR_PASSWORD
 
-  if (!moderatorPassword) {
-  throw new Error('SEED_MODERATOR_PASSWORD is required to initialize moderator')
+  if (!moderatorEmail || !moderatorPassword) {
+  throw new Error('SEED_MODERATOR_EMAIL and SEED_MODERATOR_PASSWORD are required to initialize moderator')
 }
 
   const hasModerator = await userRepo.existsBy({ email: moderatorEmail })

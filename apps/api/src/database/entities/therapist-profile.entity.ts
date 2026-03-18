@@ -71,7 +71,7 @@ export class TherapistProfile {
   updatedAt: Date
 
   /** Self-referencing moderator comments for rejection */
-  @ManyToOne('User', { nullable: true, eager: false })
+  @ManyToOne('User', { nullable: true, eager: false, onDelete: 'SET NULL' })
   @JoinColumn({ name: 'verified_by_id' })
   verifiedBy: User | null
 }

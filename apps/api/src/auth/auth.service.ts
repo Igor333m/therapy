@@ -32,7 +32,7 @@ export class AuthService {
     email: string
     role: UserRole
     emailVerified: boolean
-    emailVerificationToken: string
+    emailVerificationToken?: string
   }> {
     const normalizedEmail = dto.email.trim().toLowerCase()
 
@@ -44,6 +44,7 @@ export class AuthService {
     const role: UserRole = dto.role ?? 'client'
     const passwordHash = await hash(dto.password, 12)
     const emailVerificationToken = randomBytes(24).toString('hex')
+    const isProduction = this.configService.get<string>('NODE_ENV') === 'production'
 
     const user = this.userRepo.create({
       id: randomUUID(),
@@ -57,13 +58,16 @@ export class AuthService {
 
     await this.userRepo.save(user)
 
+    // // Only expose the email verification token in non-production environments.
     // TODO: Returning token directly — email provider not wired yet
     return {
       userId: user.id,
       email: user.email,
       role: user.role,
       emailVerified: user.emailVerified,
-      emailVerificationToken
+      emailVerificationToken: isProduction
+         ? undefined
+         : emailVerificationToken
     }
   }
 
