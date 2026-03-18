@@ -1,8 +1,7 @@
-import { IsISO8601, IsString, MinLength } from 'class-validator';
+import { IsISO8601, IsUUID } from 'class-validator';
 
 export class CreateBookingRequestDto {
-  @IsString()
-  @MinLength(5)
+  @IsUUID('all', { message: 'Invalid therapist' })
   therapistId!: string;
 
   @IsISO8601()
