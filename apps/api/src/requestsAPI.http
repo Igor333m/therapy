@@ -58,15 +58,15 @@ Content-Type: application/json
 
 ### Me (JWT required)
 GET http://localhost:3001/api/auth/me
-Authorization: Bearer paste_verification_token_here
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhMjE5NzVmNC1mMzAwLTQ4MjctOGMxMS1mMGU4MjRmNjUzZjEiLCJlbWFpbCI6InRoZXJhcGlzdEBleGFtcGxlLmNvbSIsInJvbGUiOiJ0aGVyYXBpc3QiLCJlbWFpbFZlcmlmaWVkIjp0cnVlLCJpYXQiOjE3NzM5NjA4OTEsImV4cCI6MTc3Mzk2MTc5MX0.6I9pLx8S8qw_V7k8kkENwYjWiWzjdfCD6TOBspnmQYI
 
 ### Client Booking Request (client JWT)
 POST http://localhost:3001/api/sessions/booking-requests
-Authorization: Bearer paste_verification_token_here
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmYjhjMDlhMC1hNzg1LTQ0ZmItODdkYS1kNGIyMDFkNDUwMDIiLCJlbWFpbCI6ImNsaWVudDFAZXhhbXBsZS5jb20iLCJyb2xlIjoiY2xpZW50IiwiZW1haWxWZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzczOTYwODIyLCJleHAiOjE3NzM5NjE3MjJ9.Bswbi9UAyUeE3P1YIU6Za_DxlCvdSwFYy2btbA1c7MY
 Content-Type: application/json
 
 {
-	"therapistId": "therapist id",
+	"therapistId": "a21975f4-f300-4827-8c11-f0e824f653f1",
 	"startAtUtc": "2026-05-20T10:00:00.000Z"
 }
 
@@ -78,4 +78,33 @@ Content-Type: application/json
 
 {
 	
+}
+
+### List Services
+GET http://localhost:3001/api/public/services?locale=en
+
+### List Therapists
+GET http://localhost:3001/api/public/therapists?locale=en
+
+### Get Therapist by Slug
+# /public/therapists/therapist-slug?locale=en
+GET http://localhost:3001/api/public/therapists/ana-jovanovic?locale=en
+
+### List Blog Posts
+GET http://localhost:3001/api/public/blog?locale=en
+
+### Get Blog Post by Slug
+GET http://localhost:3001/api/public/blog/post-slug?locale=en
+
+### List FAQ Entries
+GET http://localhost:3001/api/public/faq?locale=en
+
+### Create Contact Inquiry
+POST http://localhost:3001/api/public/contact-inquiries
+Content-Type: application/json
+
+{
+	"name": "John Doe",
+	"email": "john@example.com",
+	"message": "I would like to schedule a session."
 }

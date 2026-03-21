@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { AgoraModule } from './agora/agora.module';
 import { TranscriptionModule } from './transcription/transcription.module';
 import { SessionsModule } from './sessions/sessions.module';
+import { PublicModule } from './public/public.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { SessionsModule } from './sessions/sessions.module';
     DatabaseModule,
     AuthModule,
     SessionsModule,
+    PublicModule,
     AgoraModule,
     TranscriptionModule
   ],
