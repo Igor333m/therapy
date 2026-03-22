@@ -8,4 +8,3 @@ exports.CORE_SERVICES = [
     'teen',
     'coping-with-move'
 ];
-//# sourceMappingURL=index.js.map

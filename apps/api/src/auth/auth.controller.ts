@@ -28,7 +28,7 @@ export class AuthController {
     email: string;
     role: UserRole;
     emailVerified: boolean;
-    emailVerificationToken: string;
+    emailVerificationToken?: string
   }> {
     return this.authService.register(dto);
   }
