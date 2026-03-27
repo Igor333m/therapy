@@ -117,43 +117,55 @@ const blogFixtures = [
     locale: 'en' as const,
     slug: 'en-building-therapy-routines-after-relocation',
     title: 'Building Therapy Routines After Relocation',
-    content:
-      '<p>Relocation often disrupts sleep, social support, and familiar coping habits. Start with one weekly check-in routine and a short reflection ritual after each session.</p><p>In cross-border transitions, consistency matters more than intensity. Keep goals small, observable, and revisited every two weeks.</p>'
+    content: [
+      'Relocation often disrupts sleep, social support, and familiar coping habits. Start with one weekly check-in routine and a short reflection ritual after each session.',
+      'In cross-border transitions, consistency matters more than intensity. Keep goals small, observable, and revisited every two weeks.'
+    ]
   },
   {
     locale: 'en' as const,
     slug: 'en-couples-counseling-during-country-transitions',
     title: 'Couples Counseling During Country Transitions',
-    content:
-      '<p>Country transitions can amplify old conflict loops. Good couples work starts by mapping practical stressors: visas, housing, childcare, and career uncertainty.</p><p>When logistics are named clearly, emotional patterns are easier to regulate and discuss.</p>'
+    content: [
+      'Country transitions can amplify old conflict loops. Good couples work starts by mapping practical stressors: visas, housing, childcare, and career uncertainty.',
+      'When logistics are named clearly, emotional patterns are easier to regulate and discuss.'
+    ]
   },
   {
     locale: 'en' as const,
     slug: 'en-supporting-teens-in-new-school-systems',
     title: 'Supporting Teens in New School Systems',
-    content:
-      '<p>Teens entering a new school system often face identity and belonging pressure. Parents can help by balancing structure with autonomy.</p><p>Therapy can provide language for social anxiety, grief, and adaptation while preserving family trust.</p>'
+    content: [
+      'Teens entering a new school system often face identity and belonging pressure. Parents can help by balancing structure with autonomy.',
+      'Therapy can provide language for social anxiety, grief, and adaptation while preserving family trust.'
+    ]
   },
   {
     locale: 'sr' as const,
     slug: 'sr-rutine-u-terapiji-posle-preseljenja',
     title: 'Rutine u terapiji posle preseljenja',
-    content:
-      '<p>Preseljenje cesto narusava san, mrezu podrske i svakodnevne navike. Korisno je da uvedete jedan nedeljni ritual pracenja stanja i kratku refleksiju posle svake seanse.</p><p>U periodu adaptacije doslednost je vaznija od intenziteta.</p>'
+    content: [
+      'Preseljenje cesto narusava san, mrezu podrske i svakodnevne navike. Korisno je da uvedete jedan nedeljni ritual pracenja stanja i kratku refleksiju posle svake seanse.',
+      'U periodu adaptacije doslednost je vaznija od intenziteta.'
+    ]
   },
   {
     locale: 'sr' as const,
     slug: 'sr-partnerska-terapija-u-vreme-promene-drzave',
     title: 'Partnerska terapija u vreme promene drzave',
-    content:
-      '<p>Promena drzave moze pojacati stare obrasce konflikta. Korisno je prvo imenovati prakticne izvore stresa: dokumenta, stanovanje, posao i organizaciju porodice.</p><p>Kada je logistika jasna, lakse je razgovarati o emocijama.</p>'
+    content: [
+      'Promena drzave moze pojacati stare obrasce konflikta. Korisno je prvo imenovati prakticne izvore stresa: dokumenta, stanovanje, posao i organizaciju porodice.',
+      'Kada je logistika jasna, lakse je razgovarati o emocijama.'
+    ]
   },
   {
     locale: 'sr' as const,
     slug: 'sr-podrska-tinejdzerima-u-novom-skolskom-sistemu',
     title: 'Podrska tinejdzerima u novom skolskom sistemu',
-    content:
-      '<p>Tinejdzeri u novom skolskom okruzenju cesto prolaze kroz pritisak pripadanja i promene identiteta. Roditeljima pomaze ravnoteza izmedju jasne strukture i autonomije.</p><p>Terapija moze pomoci u razumevanju anksioznosti, tuge i procesa adaptacije.</p>'
+    content: [
+      'Tinejdzeri u novom skolskom okruzenju cesto prolaze kroz pritisak pripadanja i promene identiteta. Roditeljima pomaze ravnoteza izmedju jasne strukture i autonomije.',
+      'Terapija moze pomoci u razumevanju anksioznosti, tuge i procesa adaptacije.'
+    ]
   }
 ] as const
 
@@ -326,7 +338,7 @@ async function seed(): Promise<void> {
 
     if (existing) {
       existing.title = fixture.title
-      existing.content = fixture.content
+      existing.content = [...fixture.content]
       existing.locale = fixture.locale
       existing.status = 'published'
       existing.authorId = moderator?.id ?? null
@@ -337,7 +349,7 @@ async function seed(): Promise<void> {
         blogRepo.create({
           title: fixture.title,
           slug: fixture.slug,
-          content: fixture.content,
+          content: [...fixture.content],
           locale: fixture.locale,
           status: 'published',
           authorId: moderator?.id ?? null,

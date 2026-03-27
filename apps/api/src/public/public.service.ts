@@ -28,7 +28,7 @@ type PublicTherapistResponse = {
 type PublicBlogPostResponse = {
   slug: string
   title: string
-  content: string
+  content: string[]
   locale: AppLocale
   publishedAt: Date | null
 }

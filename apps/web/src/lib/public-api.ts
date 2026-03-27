@@ -21,7 +21,7 @@ export type PublicTherapist = {
 export type PublicBlogPost = {
   slug: string
   title: string
-  content: string
+  content: string[]
   locale: AppLocale
   publishedAt: string | null
 }

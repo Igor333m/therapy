@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useMemo, useState, type SyntheticEvent } from 'react'
 import type { AppLocale } from '@therapy/shared'
 import { createContactInquiry } from '../../lib/public-api'
 
@@ -34,7 +34,7 @@ export function ContactForm({ locale, dictionary, initialTherapistSlug }: Contac
     return name.trim().length >= 2 && email.trim().length > 3 && message.trim().length >= 10
   }, [email, message, name])
 
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     if (!canSubmit || isSubmitting) {
