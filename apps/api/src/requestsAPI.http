@@ -66,7 +66,7 @@ Authorization: Bearer paste_verification_token_here
 Content-Type: application/json
 
 {
-	"therapistId": "therapist id",
+	"therapistId": "Therapist ID",
 	"startAtUtc": "2026-05-20T10:00:00.000Z"
 }
 
@@ -78,4 +78,35 @@ Content-Type: application/json
 
 {
 	
+}
+
+### List Services
+GET http://localhost:3001/api/public/services?locale=en
+
+### List Therapists
+GET http://localhost:3001/api/public/therapists?locale=en
+
+### Get Therapist by Slug
+# /public/therapists/therapist-slug?locale=en
+GET http://localhost:3001/api/public/therapists/ana-jovanovic?locale=en
+
+### List Blog Posts
+GET http://localhost:3001/api/public/blog?locale=en
+
+### Get Blog Post by Slug
+GET http://localhost:3001/api/public/blog/post-slug?locale=en
+
+### List FAQ Entries
+GET http://localhost:3001/api/public/faq?locale=en
+
+### Create Contact Inquiry
+POST http://localhost:3001/api/public/contact-inquiries
+Content-Type: application/json
+
+{
+	"name": "John Doe",
+	"email": "john@example.com",
+	"message": "I would like to schedule a session.",
+	"locale": "en",
+	"therapistSlug": "john-doe"
 }

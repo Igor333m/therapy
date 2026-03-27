@@ -30,9 +30,8 @@ export class BlogPost {
   @Column({ unique: true, length: 220 })
   slug: string
 
-  /** HTML content (sanitized before storage) */
-  @Column({ type: 'text' })
-  content: string
+  @Column({ type: 'text', array: true, default: [] })
+  content: Array<string>
 
   @Column({ type: 'varchar', length: 5, default: 'en' })
   locale: AppLocale
@@ -64,7 +63,7 @@ export class FaqEntry {
   @Column({ type: 'varchar', length: 5, default: 'en' })
   locale: AppLocale
 
-  @Column({ type: 'smallint', default: 0 })
+  @Column({ name: 'sort_order', type: 'smallint', default: 0 })
   sortOrder: number
 
   @Column({ default: true })

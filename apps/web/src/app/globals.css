@@ -8,5 +8,9 @@
 
 body {
   @apply bg-slate-50 text-slate-900 antialiased;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+  font-family: "Segoe UI", "Aptos", ui-sans-serif, system-ui, sans-serif;
+}
+
+a {
+  @apply transition-colors;
 }

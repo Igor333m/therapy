@@ -153,7 +153,7 @@ export class InitSchema1710500000000 implements MigrationInterface {
         author_id uuid NULL,
         title varchar(200) NOT NULL,
         slug varchar(220) NOT NULL UNIQUE,
-        content text NOT NULL,
+        content text[] NOT NULL DEFAULT '{}',
         locale varchar(5) NOT NULL DEFAULT 'en',
         status varchar(20) NOT NULL DEFAULT 'draft',
         published_at timestamptz NULL,

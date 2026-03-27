@@ -19,6 +19,9 @@ export class TherapistProfile {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
+  @Column({ name: 'slug', length: 160, unique: true })
+  slug: string
+
   @Column({ name: 'user_id' })
   userId: string
 
